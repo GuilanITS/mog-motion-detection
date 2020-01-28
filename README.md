@@ -10,9 +10,8 @@ mog.apply();
 ```
 
 ##### 2. Mixture of Gaussian (MOG) background subtraction
-Another Gaussian Mixture-based Background/Foreground segmentation algorithm is known as MOG2. The difference between MOG and MOG2 is that MOG2 selects the appropriate number of gaussian distribution for each pixel, where MOG takes a *K* gaussian distribution for modeling. For this reason, MOG2 provides a better adaptibility to varying scenes due illumination changes. We can also set the algorithm to detect shadows as well.
+Another Gaussian Mixture-based Background/Foreground segmentation algorithm is known as MOG2. The difference between MOG and MOG2 is that MOG2 selects the appropriate number of gaussian distribution for each pixel, where MOG takes a *K* gaussian distribution for modeling. For this reason, MOG2 provides a better adaptibility to varying scenes due illumination changes. We can also set the algorithm to detect shadows as well. To use this method, we can simply use below code in C#:
 
-As in previous case, we have to create a background subtractor object. Here, you have an option of selecting whether shadow to be detected or not. If detectShadows = True (which is so by default), it detects and marks shadows, but decreases the speed. Shadows will be marked in gray color.
 ```csharp
 bool detectShadows = True;
 BackgroundSubtractorMOG2 mog2 = new BackgroundSubtractorMOG2(history, varThreshold, detectShadows);
