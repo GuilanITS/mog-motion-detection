@@ -1,28 +1,36 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Emgu.CV;
 
 namespace SimpleMotionDetection
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// A project to check the performance of Motion Detection algorithms
     /// </summary>
     public partial class MainWindow : Window
     {
+        // Global Vaiables
+        VideoCapture capturedVideo;                 // Capture Video
+        Mat originalFrame;
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void BrowseButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+
+        private void LoadVideoInit()
+        {
+
+        }
+
+        private void ProcessVideo(object sender, EventArgs e)
+        {
         }
     }
 }
