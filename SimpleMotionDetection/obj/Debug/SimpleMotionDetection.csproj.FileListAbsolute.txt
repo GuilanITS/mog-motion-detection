@@ -1,0 +1,15 @@
+E:\Git\mog-motion-detection\SimpleMotionDetection\bin\Debug\SimpleMotionDetection.exe.config
+E:\Git\mog-motion-detection\SimpleMotionDetection\bin\Debug\SimpleMotionDetection.exe
+E:\Git\mog-motion-detection\SimpleMotionDetection\bin\Debug\SimpleMotionDetection.pdb
+E:\Git\mog-motion-detection\SimpleMotionDetection\obj\Debug\SimpleMotionDetection.csprojAssemblyReference.cache
+E:\Git\mog-motion-detection\SimpleMotionDetection\obj\Debug\MainWindow.g.cs
+E:\Git\mog-motion-detection\SimpleMotionDetection\obj\Debug\App.g.cs
+E:\Git\mog-motion-detection\SimpleMotionDetection\obj\Debug\SimpleMotionDetection_MarkupCompile.cache
+E:\Git\mog-motion-detection\SimpleMotionDetection\obj\Debug\SimpleMotionDetection_MarkupCompile.lref
+E:\Git\mog-motion-detection\SimpleMotionDetection\obj\Debug\MainWindow.baml
+E:\Git\mog-motion-detection\SimpleMotionDetection\obj\Debug\SimpleMotionDetection.g.resources
+E:\Git\mog-motion-detection\SimpleMotionDetection\obj\Debug\SimpleMotionDetection.Properties.Resources.resources
+E:\Git\mog-motion-detection\SimpleMotionDetection\obj\Debug\SimpleMotionDetection.csproj.GenerateResource.cache
+E:\Git\mog-motion-detection\SimpleMotionDetection\obj\Debug\SimpleMotionDetection.csproj.CoreCompileInputs.cache
+E:\Git\mog-motion-detection\SimpleMotionDetection\obj\Debug\SimpleMotionDetection.exe
+E:\Git\mog-motion-detection\SimpleMotionDetection\obj\Debug\SimpleMotionDetection.pdb
