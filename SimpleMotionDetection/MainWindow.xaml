@@ -8,7 +8,14 @@
         Title="Simple Motion Detection" Height="450" Width="800">
     <Grid>
         <Button x:Name="browseButton" Content="Browse video ..." HorizontalAlignment="Left" Margin="27,52,0,0" VerticalAlignment="Top" Width="143" Height="30" Click="BrowseButton_Click"/>
-        <Label Content="1) Load a video file ..." HorizontalAlignment="Left" Margin="27,21,0,0" VerticalAlignment="Top" Width="195" FontFamily="Cambria" FontWeight="Bold"/>
+        <Label Content="1) Load a video file ..." HorizontalAlignment="Left" Margin="27,21,0,0" VerticalAlignment="Top" Width="143" FontFamily="Cambria" FontWeight="Bold"/>
+        <Image x:Name="ImageViewer" HorizontalAlignment="Left" Height="358" Margin="198,21,0,0" VerticalAlignment="Top" Width="573"/>
+        <Label Content="2) Choose what to show" HorizontalAlignment="Left" Margin="27,104,0,0" VerticalAlignment="Top" Width="143" FontFamily="Cambria" FontWeight="Bold"/>
+        <Label Content="3) Change configs" HorizontalAlignment="Left" Margin="27,213,0,0" VerticalAlignment="Top" Width="143" FontFamily="Cambria" FontWeight="Bold"/>
+        <RadioButton x:Name="RadioButtonMain" Content="Main" HorizontalAlignment="Left" Margin="47,133,0,0" VerticalAlignment="Top" Height="16" Width="123" FontFamily="Cambria"/>
+        <RadioButton x:Name="RadioButtonMog" Content="MOG output" HorizontalAlignment="Left" Margin="47,154,0,0" VerticalAlignment="Top" Height="16" Width="123" FontFamily="Cambria"/>
+        <RadioButton x:Name="RadioButtonMog2" Content="MOG2 output" HorizontalAlignment="Left" Margin="47,175,0,0" VerticalAlignment="Top" Height="16" Width="123" FontFamily="Cambria"/>
+        <Label Content="https://github.com/alitourani" HorizontalAlignment="Left" Margin="617,387,0,0" VerticalAlignment="Top" Width="154" FontFamily="Cambria" FontSize="11" Background="{x:Null}" Foreground="#FF1E95E8"/>
 
     </Grid>
 </Window>
