@@ -2,6 +2,11 @@
 using System.Windows;
 using Microsoft.Win32;
 using Emgu.CV;
+using Emgu.CV.Util;
+using Emgu.CV.Structure;
+using System.Windows.Media.Imaging;
+using System.IO;
+using System.Drawing.Imaging;
 
 namespace SimpleMotionDetection
 {
@@ -14,7 +19,8 @@ namespace SimpleMotionDetection
         VideoCapture capturedVideo;                 // Capture Video
         double TotalFrames = 0;                     // Video's Total Freams
         double FrameCounter = 0;                    // Video's Frame-rate
-        Mat originalFrame;
+        decimal playingState = 0;                   // Set the State of Showing Frames (= Combobox Index)
+        Mat originalFrame, displayingFrame, thresholdedFrame;
 
         public MainWindow()
         {
@@ -48,7 +54,6 @@ namespace SimpleMotionDetection
             }
         }
 
-
         private void LoadVideoInit()
         {
             TotalFrames = Convert.ToDouble(capturedVideo.GetCaptureProperty(Emgu.CV.CvEnum.CapProp.FrameCount));
@@ -64,6 +69,42 @@ namespace SimpleMotionDetection
                 return;
             }
             capturedVideo.Retrieve(originalFrame);
+            // Check which frames to show
+            if (playingState == 0)
+                displayingFrame = originalFrame.Clone();
+            else if (playingState == 1)
+                displayingFrame = thresholdedFrame.Clone();
+            else if (playingState == 2)
+                displayingFrame = thresholdedFrame.Clone();
+            // Use another thread to update UI
+            this.Dispatcher.Invoke(() => {
+                BitmapImage bitmapImage = new BitmapImage();
+                using (MemoryStream memoryLocation = new MemoryStream())
+                {
+                    displayingFrame.Bitmap.Save(memoryLocation, ImageFormat.Png);
+                    memoryLocation.Position = 0;
+                    bitmapImage.BeginInit();
+                    bitmapImage.StreamSource = memoryLocation;
+                    bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmapImage.EndInit();
+                }
+                ImageViewer.Source = bitmapImage;
+            });
+        }
+
+        private void RadioButtonMain_Checked(object sender, RoutedEventArgs e)
+        {
+            playingState = 0;
+        }
+
+        private void RadioButtonMog_Checked(object sender, RoutedEventArgs e)
+        {
+            playingState = 1;
+        }
+
+        private void RadioButtonMog2_Checked(object sender, RoutedEventArgs e)
+        {
+            playingState = 2;
         }
     }
 }

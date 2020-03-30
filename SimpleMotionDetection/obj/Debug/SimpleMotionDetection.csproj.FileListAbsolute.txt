@@ -13,8 +13,6 @@ E:\Git\mog-motion-detection\SimpleMotionDetection\obj\Debug\SimpleMotionDetectio
 E:\Git\mog-motion-detection\SimpleMotionDetection\obj\Debug\SimpleMotionDetection.csproj.CoreCompileInputs.cache
 E:\Git\mog-motion-detection\SimpleMotionDetection\obj\Debug\SimpleMotionDetection.exe
 E:\Git\mog-motion-detection\SimpleMotionDetection\obj\Debug\SimpleMotionDetection.pdb
-E:\Git\mog-motion-detection\SimpleMotionDetection\bin\Debug\Emgu.CV.World.NetStandard.dll
-E:\Git\mog-motion-detection\SimpleMotionDetection\bin\Debug\Emgu.CV.World.NetStandard.xml
 E:\Git\mog-motion-detection\SimpleMotionDetection\obj\Debug\SimpleMotionDetection.csproj.CopyComplete
 E:\Git\mog-motion-detection\SimpleMotionDetection\bin\Debug\ZedGraph.dll
 E:\Git\mog-motion-detection\SimpleMotionDetection\bin\Debug\ZedGraph.xml
@@ -33,3 +31,17 @@ E:\Git\mog-motion-detection\SimpleMotionDetection\bin\Debug\zh-cn\ZedGraph.resou
 E:\Git\mog-motion-detection\SimpleMotionDetection\bin\Debug\zh-tw\ZedGraph.resources.dll
 E:\Git\mog-motion-detection\SimpleMotionDetection\bin\Debug\System.Numerics.Vectors.dll
 E:\Git\mog-motion-detection\SimpleMotionDetection\bin\Debug\System.Numerics.Vectors.xml
+E:\Git\mog-motion-detection\SimpleMotionDetection\bin\Debug\x64\concrt140.dll
+E:\Git\mog-motion-detection\SimpleMotionDetection\bin\Debug\x64\cvextern.dll
+E:\Git\mog-motion-detection\SimpleMotionDetection\bin\Debug\x64\msvcp140.dll
+E:\Git\mog-motion-detection\SimpleMotionDetection\bin\Debug\x64\opencv_videoio_ffmpeg411_64.dll
+E:\Git\mog-motion-detection\SimpleMotionDetection\bin\Debug\x64\vcruntime140.dll
+E:\Git\mog-motion-detection\SimpleMotionDetection\bin\Debug\x86\concrt140.dll
+E:\Git\mog-motion-detection\SimpleMotionDetection\bin\Debug\x86\cvextern.dll
+E:\Git\mog-motion-detection\SimpleMotionDetection\bin\Debug\x86\msvcp140.dll
+E:\Git\mog-motion-detection\SimpleMotionDetection\bin\Debug\x86\opencv_videoio_ffmpeg411.dll
+E:\Git\mog-motion-detection\SimpleMotionDetection\bin\Debug\x86\vcruntime140.dll
+E:\Git\mog-motion-detection\SimpleMotionDetection\bin\Debug\Emgu.CV.UI.dll
+E:\Git\mog-motion-detection\SimpleMotionDetection\bin\Debug\Emgu.CV.World.dll
+E:\Git\mog-motion-detection\SimpleMotionDetection\bin\Debug\Emgu.CV.UI.xml
+E:\Git\mog-motion-detection\SimpleMotionDetection\bin\Debug\Emgu.CV.World.xml
