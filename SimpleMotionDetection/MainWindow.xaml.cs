@@ -49,10 +49,10 @@ namespace SimpleMotionDetection
                 {
                     LoadVideoInit();
                     originalFrame = new Mat();
-                    if (playingState == 1)
-                        mog = new BackgroundSubtractorMOG(kernelHistory, kernelMixtures, kernelBackgroundRatio, kernelNoiseSigma);
-                    if (playingState == 2)
-                        mog2 = new BackgroundSubtractorMOG2(kernelHistory, kernelThreshold, false);
+                    thresholdedFrame = new Mat();
+                    mog = new BackgroundSubtractorMOG(kernelHistory, kernelMixtures, kernelBackgroundRatio, kernelNoiseSigma);
+                    mog2 = new BackgroundSubtractorMOG2(kernelHistory, kernelThreshold, false);
+                    capturedVideo.ImageGrabbed += ProcessVideo;
                     capturedVideo.Start();
                 }
                 else
@@ -96,13 +96,13 @@ namespace SimpleMotionDetection
                 else if (playingState == 1)
                 {
                     CvInvoke.CvtColor(originalFrame, originalFrame, Emgu.CV.CvEnum.ColorConversion.Bgra2Gray, 1);
-                    mog.Apply(displayingFrame, thresholdedFrame);
+                    mog.Apply(originalFrame, thresholdedFrame);
                     displayingFrame = thresholdedFrame.Clone();
                 }
                 else if (playingState == 2)
                 {
                     CvInvoke.CvtColor(originalFrame, originalFrame, Emgu.CV.CvEnum.ColorConversion.Bgra2Gray, 1);
-                    mog2.Apply(displayingFrame, thresholdedFrame, -1);
+                    mog2.Apply(originalFrame, thresholdedFrame, -1);
                     displayingFrame = thresholdedFrame.Clone();
                 }
                 // Use another thread to update UI
