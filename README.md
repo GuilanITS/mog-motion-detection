@@ -1,5 +1,8 @@
 # Motion detection by MOG Background Subtraction
 Background Subtraction is a commonly used method to segment moving parts from static scenes (background and foreground). The moving regions which contain edges of vehicles are detected by subtracting the current frame of the video from a reference static background. The reference background creation process is known as background modeling. The background model must be continuously updated and contain no moving objects.
+
+![Ali Tourani Motion Detecion MOG](http://alitourani.ir/wp-content/uploads/Ali-Tourani-Motion-Detection.png "Ali Tourani Motion Detecion MOG")
+
 ##### 1. Mixture of Gaussian (MOG) background subtraction
 One of the extensions to the common background subtraction method is **Mixture of Gaussian (MOG)** background subtraction that is dependent to a combination of frames instead of only one frame. In this method, for each background pixel, a mixture of *k* Gaussian distribution and a weighting parameter are utilized to save the lifetime of pixels in the scene, where *k* can vary in the range of 3 to 5. Thus, remaining pixels with more than a threshold time in the scene means they have the higher possibility of belonging to the background scene. On the other hand, if the pixel remains unchanged for a period of time, it is considered as a dominant background pixel. To update the model, **MoG-BS** method can be used as an online approximation scale. If the difference of pixels in a frame is more than a predefined threshold, they are classified as moving parts. This method is very sensitive to changes in the environment. To use this method, we can simply use below code in C#:
 ```csharp
@@ -23,8 +26,14 @@ mog2.Update(frame);
 ### Environment
 The application is implemented in **C#** programming language and utilizes **AForge.Net** and **EmguCV** image processing libraries.
 
-### Sample Output
-A sample output of the application is presented in below image. As it can be seen, calibration of the input video to omit any existing noises is really important.
+### How to Run the Project
+Simply clone the repository and start the solution in Visual Studio.
+
+### Known Issues
+Here is the list of known issues and bugs which I will work on them later:
+- Need a play/pause button in the UI
+- Need a configuration pane to simply manipulate MGO and MOG2 input parameters
+- Bug: a non-reference error occurs when the video finished in MOG/MOG2 view modes
 
 ### References
 1. P. KaewTraKulPong and R. Bowden, "***An Improved Adaptive Background Mixture Model for Real-time Tracking with Shadow Detection***,” 2nd European Workshop on Advanced Video-based Surveillance Systems, Genova, 2002. ([link](https://www.researchgate.net/publication/2557021_An_Improved_Adaptive_Background_Mixture_Model_for_Realtime_Tracking_with_Shadow_Detection "link"))
