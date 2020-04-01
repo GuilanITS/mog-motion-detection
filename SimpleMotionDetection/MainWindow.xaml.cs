@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows;
-using Microsoft.Win32;
+using System.Windows.Forms;
 using Emgu.CV;
 using Emgu.CV.Util;
 using Emgu.CV.Structure;
@@ -35,10 +35,10 @@ namespace SimpleMotionDetection
             loadVideoDialog.ShowDialog();
             try
             {
+                capturedVideo = new VideoCapture(loadVideoDialog.FileName);
                 if (loadVideoDialog.FileName != "")
                 {
                     LoadVideoInit();
-                    capturedVideo = new VideoCapture(loadVideoDialog.FileName);
                     originalFrame = new Mat();
                     capturedVideo.ImageGrabbed += ProcessVideo;
                     capturedVideo.Start();
@@ -50,46 +50,56 @@ namespace SimpleMotionDetection
             }
             catch (Exception err)
             {
-                MessageBox.Show("Something went wrong!\n" + err.ToString(), "Error!", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                System.Windows.MessageBox.Show("Something went wrong!\n" + err.ToString(), "Error!", MessageBoxButton.OK, MessageBoxImage.Asterisk);
             }
+            loadVideoDialog.Dispose();
         }
 
         private void LoadVideoInit()
         {
             TotalFrames = Convert.ToDouble(capturedVideo.GetCaptureProperty(Emgu.CV.CvEnum.CapProp.FrameCount));
+            playingState = 0;
         }
 
         private void ProcessVideo(object sender, EventArgs e)
         {
             FrameCounter++;
-            // Check the end of video
-            if (FrameCounter == TotalFrames)
+            try
             {
-                capturedVideo.Dispose();
-                return;
-            }
-            capturedVideo.Retrieve(originalFrame);
-            // Check which frames to show
-            if (playingState == 0)
-                displayingFrame = originalFrame.Clone();
-            else if (playingState == 1)
-                displayingFrame = thresholdedFrame.Clone();
-            else if (playingState == 2)
-                displayingFrame = thresholdedFrame.Clone();
-            // Use another thread to update UI
-            this.Dispatcher.Invoke(() => {
-                BitmapImage bitmapImage = new BitmapImage();
-                using (MemoryStream memoryLocation = new MemoryStream())
+                // Check the end of video
+                if (FrameCounter == TotalFrames)
                 {
-                    displayingFrame.Bitmap.Save(memoryLocation, ImageFormat.Png);
-                    memoryLocation.Position = 0;
-                    bitmapImage.BeginInit();
-                    bitmapImage.StreamSource = memoryLocation;
-                    bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
-                    bitmapImage.EndInit();
+                    capturedVideo.Dispose();
+                    return;
                 }
-                ImageViewer.Source = bitmapImage;
-            });
+                capturedVideo.Retrieve(originalFrame);
+                // Check which frames to show
+                if (playingState == 0)
+                    displayingFrame = originalFrame.Clone();
+                else if (playingState == 1)
+                    displayingFrame = thresholdedFrame.Clone();
+                else if (playingState == 2)
+                    displayingFrame = thresholdedFrame.Clone();
+                // Use another thread to update UI
+                this.Dispatcher.Invoke(() =>
+                {
+                    BitmapImage bitmapImage = new BitmapImage();
+                    using (MemoryStream memoryLocation = new MemoryStream())
+                    {
+                        displayingFrame.Bitmap.Save(memoryLocation, ImageFormat.Png);
+                        memoryLocation.Position = 0;
+                        bitmapImage.BeginInit();
+                        bitmapImage.StreamSource = memoryLocation;
+                        bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                        bitmapImage.EndInit();
+                    }
+                    ImageViewer.Source = bitmapImage;
+                });
+            }
+            catch (Exception err)
+            {
+                System.Windows.MessageBox.Show("Something went wrong!\n" + err.ToString(), "Error!", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+            }
         }
 
         private void RadioButtonMain_Checked(object sender, RoutedEventArgs e)

@@ -9,13 +9,16 @@
     <Grid>
         <Button x:Name="browseButton" Content="Browse video ..." HorizontalAlignment="Left" Margin="27,52,0,0" VerticalAlignment="Top" Width="143" Height="30" Click="BrowseButton_Click"/>
         <Label Content="1) Load a video file ..." HorizontalAlignment="Left" Margin="27,21,0,0" VerticalAlignment="Top" Width="143" FontFamily="Cambria" FontWeight="Bold"/>
-        <Image x:Name="ImageViewer" HorizontalAlignment="Left" Height="358" Margin="198,21,0,0" VerticalAlignment="Top" Width="573"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="372" Margin="186,10,0,0" VerticalAlignment="Top" Width="585">
+            <Image x:Name="ImageViewer" HorizontalAlignment="Left" Height="350" Margin="9,9,0,0" VerticalAlignment="Top" Width="565"/>
+        </Border>
         <Label Content="2) Choose what to show" HorizontalAlignment="Left" Margin="27,104,0,0" VerticalAlignment="Top" Width="143" FontFamily="Cambria" FontWeight="Bold"/>
         <Label Content="3) Change configs" HorizontalAlignment="Left" Margin="27,213,0,0" VerticalAlignment="Top" Width="143" FontFamily="Cambria" FontWeight="Bold"/>
-        <RadioButton x:Name="RadioButtonMain" Content="Main" HorizontalAlignment="Left" Margin="47,133,0,0" VerticalAlignment="Top" Height="16" Width="123" FontFamily="Cambria" Checked="RadioButtonMain_Checked"/>
+        <RadioButton x:Name="RadioButtonMain" Content="Main" HorizontalAlignment="Left" Margin="47,133,0,0" VerticalAlignment="Top" Height="16" Width="123" FontFamily="Cambria" Checked="RadioButtonMain_Checked" IsChecked="True"/>
         <RadioButton x:Name="RadioButtonMog" Content="MOG output" HorizontalAlignment="Left" Margin="47,154,0,0" VerticalAlignment="Top" Height="16" Width="123" FontFamily="Cambria" Checked="RadioButtonMog_Checked"/>
         <RadioButton x:Name="RadioButtonMog2" Content="MOG2 output" HorizontalAlignment="Left" Margin="47,175,0,0" VerticalAlignment="Top" Height="16" Width="123" FontFamily="Cambria" Checked="RadioButtonMog2_Checked"/>
         <Label Content="https://github.com/alitourani" HorizontalAlignment="Left" Margin="617,387,0,0" VerticalAlignment="Top" Width="154" FontFamily="Cambria" FontSize="11" Background="{x:Null}" Foreground="#FF1E95E8"/>
+        
 
     </Grid>
 </Window>
