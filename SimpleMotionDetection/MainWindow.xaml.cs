@@ -7,6 +7,7 @@ using Emgu.CV.Structure;
 using System.Windows.Media.Imaging;
 using System.IO;
 using System.Drawing.Imaging;
+using Emgu.CV.BgSegm;
 
 namespace SimpleMotionDetection
 {
@@ -21,6 +22,14 @@ namespace SimpleMotionDetection
         double FrameCounter = 0;                    // Video's Frame-rate
         decimal playingState = 0;                   // Set the State of Showing Frames (= Combobox Index)
         Mat originalFrame, displayingFrame, thresholdedFrame;
+        // Image Processing
+        BackgroundSubtractorMOG mog;                // Background Subtraction Method MOG
+        BackgroundSubtractorMOG2 mog2;              // Background Subtraction Method MOG2
+        int kernelHistory;                          // Number of Previous Frames to be Kept (MOG & MOG2)
+        int kernelMixtures;                         // Size of the Gaussian Mixture Parameters (MOG)
+        int kernelNoiseSigma;                       // Noise Intense (MOG)
+        float kernelThreshold;                         // Thresholded Value (MOG2)
+        double kernelBackgroundRatio;               // BG-Ratio Value (MOG)
 
         public MainWindow()
         {
@@ -40,7 +49,10 @@ namespace SimpleMotionDetection
                 {
                     LoadVideoInit();
                     originalFrame = new Mat();
-                    capturedVideo.ImageGrabbed += ProcessVideo;
+                    if (playingState == 1)
+                        mog = new BackgroundSubtractorMOG(kernelHistory, kernelMixtures, kernelBackgroundRatio, kernelNoiseSigma);
+                    if (playingState == 2)
+                        mog2 = new BackgroundSubtractorMOG2(kernelHistory, kernelThreshold, false);
                     capturedVideo.Start();
                 }
                 else
@@ -59,6 +71,11 @@ namespace SimpleMotionDetection
         {
             TotalFrames = Convert.ToDouble(capturedVideo.GetCaptureProperty(Emgu.CV.CvEnum.CapProp.FrameCount));
             playingState = 0;
+            kernelHistory = 20;
+            kernelThreshold = 8;
+            kernelMixtures = 15;
+            kernelBackgroundRatio = 0.5;
+            kernelNoiseSigma = 0;
         }
 
         private void ProcessVideo(object sender, EventArgs e)
@@ -77,9 +94,17 @@ namespace SimpleMotionDetection
                 if (playingState == 0)
                     displayingFrame = originalFrame.Clone();
                 else if (playingState == 1)
+                {
+                    CvInvoke.CvtColor(originalFrame, originalFrame, Emgu.CV.CvEnum.ColorConversion.Bgra2Gray, 1);
+                    mog.Apply(displayingFrame, thresholdedFrame);
                     displayingFrame = thresholdedFrame.Clone();
+                }
                 else if (playingState == 2)
+                {
+                    CvInvoke.CvtColor(originalFrame, originalFrame, Emgu.CV.CvEnum.ColorConversion.Bgra2Gray, 1);
+                    mog2.Apply(displayingFrame, thresholdedFrame, -1);
                     displayingFrame = thresholdedFrame.Clone();
+                }
                 // Use another thread to update UI
                 this.Dispatcher.Invoke(() =>
                 {

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SimpleMotionDetection"
         mc:Ignorable="d"
-        Title="Simple Motion Detection" Height="450" Width="800">
+        Title="Simple Motion Detection" Height="450" Width="800" ResizeMode="NoResize">
     <Grid>
         <Button x:Name="browseButton" Content="Browse video ..." HorizontalAlignment="Left" Margin="27,52,0,0" VerticalAlignment="Top" Width="143" Height="30" Click="BrowseButton_Click"/>
         <Label Content="1) Load a video file ..." HorizontalAlignment="Left" Margin="27,21,0,0" VerticalAlignment="Top" Width="143" FontFamily="Cambria" FontWeight="Bold"/>
